@@ -78,6 +78,7 @@
 .form_css .input_field>.input_item>input{
     border: none;
     margin-left: 5px;
+    font-size: 18px;
 }
 .form_css .input_field>.input_item>input:focus{
     outline: none;
