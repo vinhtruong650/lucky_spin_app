@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./css/confirm.css">
+    <link rel="stylesheet" href="./css/confirmScreen.css">
     <link rel="stylesheet" href="./vendor/fontawesome-free-5.15.4-web/css/all.min.css">
 </head>
 <body>
@@ -15,34 +15,57 @@
         <div class="tagline">
             <img src="./image/tagline_chuong_trinh/TAGLINE_chuong_trinh.png" alt="">
         </div>
+        <main class="body">
+            <form class="form_css" action="" method="post">
+                <div class="input_field">
+                    <label for="">Họ và tên</label><br>
+                    <div class="input_item">
+                        <i class="far fa-user"></i>
+                        <input type="text">
+                    </div>
+                </div>
+                <div class="input_field">
+                    <label for="">Số điện thoại</label><br>
+                    <div class="input_item">
+                        <i class="fas fa-phone-alt"></i>
+                        <input type="text">
+                    </div>
+                </div>
+                <div class="input_field">
+                    <label for="">Địa chỉ</label><br>
+                    <div class="input_item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <input type="text"><br>
+                    </div>
+                    <p class="text_gray">(*)Thông tin bắt buộc</p>
+                </div>
+                <div class="input_field">
+                    <button class="btn_login" type="">Xác nhận</i></button>
+                </div>
+            </form>
+        </main>
         
-        <form class="form_css" action="" method="post">
-            <div class="input_field">
-                <label for="">Họ và tên</label><br>
-                <div class="input_item">
-                    <i class="far fa-user"></i>
-                    <input type="text">
-                </div>
-            </div>
-            <div class="input_field">
-                <label for="">Số điện thoại</label><br>
-                <div class="input_item">
-                    <i class="fas fa-phone-alt"></i>
-                    <input type="text">
-                </div>
-            </div>
-            <div class="input_field">
-                <label for="">Địa chỉ</label><br>
-                <div class="input_item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <input type="text"><br>
-                </div>
-                <p>(*)Thông tin bắt buộc</p>
-            </div>
-            <div class="input_field">
-                <button type="">Xác nhận</i></button>
-            </div>
-        </form>
     </div>
 </body>
+<script>
+    initW_H();
+    function initW_H(){
+        var h_scr = window.innerHeight;
+    var w_scr = window.innerWidth;
+    var srcLogin = document.querySelector(".form_size");
+    if(h_scr<w_scr){
+        var w_scrLogin = h_scr*800.0/1340;
+        srcLogin.style.height = h_scr + "px";
+        srcLogin.style.width = w_scrLogin + "px";
+    }else{
+        var h_scrLogin = w_scr*1340.0/800;
+        srcLogin.style.height = h_scrLogin + "px";
+        srcLogin.style.width = w_scr + "px";
+    }
+    }
+    window.onresize = initW_H;
+    
+    
+    
+</script>
 </html>
