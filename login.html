@@ -32,24 +32,24 @@
                 </div>
                 <!-- drop_down -->
                 <div class="input_field drop_down">
-                    <button class="dropbtn" onclick="show_hide_dropdown()">
+                    <button class="dropbtn" type="button" onclick=show_hide_dropdown()>
                         <strong>Bạn biết đến nồi chiên không dầu TOSHIBA thông qua kênh nào?</strong>
                     </button>
                     <div class="dropdown-menu" >
-                        <div class="menu_item" onclick="">
-                        <input type="checkbox" name="" id=""><p>Google</p>
+                        <div class="menu_item">
+                        <input id="google" type="checkbox" name="" id=""><label for="google">Google</label>
                         </div>
                         <div class="menu_item">
-                        <input type="checkbox" name="" id=""><p>Facebook</p>
+                        <input id="facebook" style="color: red;" type="checkbox" name="" id=""><label for="facebook">Facebook</label>
                         </div>
-                        <div class="menu_item">
-                            <input type="checkbox" name="" id=""><p>Siêu thị điện máy</p>
+                        <div  class="menu_item">
+                            <input id="sieuthi" type="checkbox" name="" id=""><label for="sieuthi">Siêu thị điện máy</label>
                         </div>
-                        <div class="menu_item">
-                            <input type="checkbox" name="" id=""><p>Người thân/Bạn bè</p>
+                        <div  class="menu_item">
+                            <input id="nguoithan" type="checkbox" name="" id=""><label for="nguoithan">Người thân/Bạn bè</label>
                         </div>
-                        <div class="menu_item">
-                            <input type="checkbox" name="" id=""><p>Tại khu vực sự kiện</p>
+                        <div  class="menu_item">
+                            <input id="khuvuc_sk" type="checkbox" name="" id=""><label for="khuvuc_sk">Tại khu vực sự kiện</label>
                         </div>
                     </div>
                 </div>
@@ -82,15 +82,25 @@
     window.onresize = initW_H;
 
     function show_hide_dropdown(){
-        var drop_menu=document.getElementsByClassName("dropdown-menu");
-        if(drop_menu.style.display=="none")
-            drop_menu.style.display=="block";
-        else
-            drop_menu.style.display="none";
+        var drop_menu = document.querySelector(".dropdown-menu");
+        drop_menu.classList.toggle("display_none");
     }
 
-    function checkedBox(){
-        
+    var menu_item=document.querySelectorAll(".menu_item");
+        menu_item.forEach((item)=>{
+            var _this = item;
+            item.addEventListener("click",()=>{checkedBox(_this);});
+        })
+    function checkedBox(_this){
+        var box = _this.querySelector("input[type='checkbox']:checked");
+        var lab = _this.querySelector("label");
+        if(box!=null){
+            lab.style.color = "red";
+            box.style.color = "red";
+        }
+        else{
+            lab.style.color = "gray";
+        }
     }
     
 </script>
