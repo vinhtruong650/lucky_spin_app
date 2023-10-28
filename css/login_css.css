@@ -36,7 +36,6 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 20px;
 }
 
 .frm_seri{
@@ -115,7 +114,7 @@
 .menu_item label{
     width: 100%;
     font-weight: normal;
-    padding: 4% 0 ;
+    padding: 3% 0 ;
 }
 .menu_item input{
     width: 20px;
@@ -157,12 +156,12 @@ input[type="checkbox"]:checked{
     border-radius:0 0 10px 10px;
     transition: 0.5s;
     height: 0;
-    overflow: scroll;
+    overflow: hidden;
    }
    
    /* .drop_down:hover .dropdown-menu {display: block;} */
 .display_none{
-    height: 300%;
+    height: 205px;
 }
    .menu_item:hover{
     background-color: lightgray;
