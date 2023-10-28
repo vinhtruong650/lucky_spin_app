@@ -36,7 +36,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 40px;
+    margin-top: 20px;
 }
 
 .frm_seri{
@@ -115,7 +115,7 @@
 .menu_item label{
     width: 100%;
     font-weight: normal;
-    padding-top: 10px;
+    padding: 4% 0 ;
 }
 .menu_item input{
     width: 20px;
@@ -142,7 +142,7 @@ input[type="checkbox"]:checked{
     background-color: white;
     color: black;
     font-size: 16px;
-    padding: 10px 20px;
+    padding: 5px 20px;
     border: none;
    }
    
@@ -157,12 +157,12 @@ input[type="checkbox"]:checked{
     border-radius:0 0 10px 10px;
     transition: 0.5s;
     height: 0;
-    overflow: hidden;
+    overflow: scroll;
    }
    
    /* .drop_down:hover .dropdown-menu {display: block;} */
 .display_none{
-    height: 205px;
+    height: 300%;
 }
    .menu_item:hover{
     background-color: lightgray;
