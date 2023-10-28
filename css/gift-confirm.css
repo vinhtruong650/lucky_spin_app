@@ -84,6 +84,7 @@ margin-bottom: 255px;
 }
 #btn_close{
     padding: 4px 40px;
+    cursor: pointer;
 }
 
 #nckd{

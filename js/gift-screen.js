@@ -15,3 +15,6 @@ function initW_H() {
 }
 window.onresize = initW_H;
 
+function btn(){
+    alert('oke');
+}
