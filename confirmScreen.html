@@ -16,7 +16,7 @@
             <img src="./image/tagline_chuong_trinh/TAGLINE_chuong_trinh.png" alt="">
         </div>
         <main class="body">
-            <form class="form_css" action="" method="post">
+            <form class="form_css" action="login.html" method="">
                 <div class="input_field">
                     <label for="">Họ và tên</label><br>
                     <div class="input_item">
@@ -47,24 +47,6 @@
         
     </div>
 </body>
-<script>
-    initW_H();
-    function initW_H(){
-    var h_scr = window.innerHeight;
-    var w_scr = window.innerWidth;
-    var srcLogin = document.querySelector(".form_size");
-    var h_scrLogin = h_scr;
-    var w_scrLogin = h_scrLogin*800.0/1340;
-    if(w_scrLogin>w_scr){
-        h_scrLogin = w_scr*1340.0/800;
-        w_scrLogin = w_scr;
-    }
-    srcLogin.style.height = h_scrLogin + "px";
-    srcLogin.style.width = w_scrLogin + "px";
-    }
-    window.onresize = initW_H;
-    
-    
-    
-</script>
+<script src="js/index.js"></script>
+
 </html>
