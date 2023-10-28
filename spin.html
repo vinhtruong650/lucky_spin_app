@@ -477,11 +477,16 @@
 
             $('#btn_spin').click(function () {
                 if (flag == false) {
+                    console.log(flag);
+
                     clearAni();
                     $('#btn_spin').hide();
+                    $('#spinform').addClass('spinform_bgspin');
                     $(".vongquay").addClass(awa_ani);
                     flag = true;
-                    setTimeout("$('#btn_spin').show();flag=false;window.location.href('');", 8000);
+                    console.log(flag);
+
+                    setTimeout("$('#btn_spin').show();flag=false;$('#spinform').removeClass('spinform_bgspin');", 10000);
                 }
             });
         });
