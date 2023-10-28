@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+﻿<?php
+require_once('../lib/db.php');
+if(isset($pro_path))
+{
+    require_once($pro_path);
+}
+?><!DOCTYPE html>
 <html lang="en">
 
     <head>
@@ -14,7 +20,7 @@
         <link href="assets\css\bootstrap.min.css" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
         <link href="assets\css\icons.min.css" rel="stylesheet" type="text/css">
         <link href="assets\css\app.min.css" rel="stylesheet" type="text/css" id="app-stylesheet">
-
+        <link rel="stylesheet" href="assets\css\account.css">
     </head>
 
     <body>
@@ -211,7 +217,7 @@
                     </li>
     
                     <li>
-                        <a href="ui-elements.html">
+                        <a href="account.php">
                             <i class="ti-paint-bucket"></i>
                             <span> QUẢN LÝ TÀI KHOẢN </span>
                         </a>
@@ -350,7 +356,7 @@
 
         <!-- App js -->
         <script src="assets\js\app.min.js"></script>
-
+        <script src="assets\js\account.js"></script>
     </body>
 
 </html>
