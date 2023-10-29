@@ -64,7 +64,7 @@
                        margin-bottom: 30px; font-weight:900;border-radius: 1rem;background: linear-gradient(to bottom,red,red,red);border:none;color:white;'class='btn btn-success h3'>Kết thúc</button>";
                         }
                     ?>
-                    
+
                 </div>
             </div>
             <div id="nckd">
@@ -78,22 +78,33 @@
 <script src="vendor/jquery.min.js"></script>
 <script src="js/index.js"></script>
 <script>
-    
-
 function btnTiepTuc() {
     $.ajax({
-                method: "POST",
-                url: "api/update_logs.php",
-                data: {}
-            })
-            .done(function (msg) {
-                alert(msg);
-                window.location.href='spin.php'
-            }).fail(function(){
-                alert("Đã xảy ra lỗi!, hãy thử lại");
-            })
+            method: "POST",
+            url: "api/update_logs.php",
+            data: {}
+        })
+        .done(function(msg) {
+            window.location.href = 'spin.php'
+        }).fail(function() {
+            alert("Đã xảy ra lỗi!, hãy thử lại");
+        })
+
+}
+
+function btnKetThuc() {
+    $.ajax({
+            method: "POST",
+            url: "api/update_logs.php",
+            data: {}
+        })
+        .done(function(msg) {
+            window.location.href = 'login.php'
+        }).fail(function() {
+            alert("Đã xảy ra lỗi!, hãy thử lại");
+        })
 
 }
 </script>
-</html>
 
+</html>

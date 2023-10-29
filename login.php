@@ -3,12 +3,16 @@
     if(!isset($_SESSION['page'])){
         header('Location: index.php');
     };
+    
     if(isset($_POST['btn_submit'])&&$_SESSION['page']==1){
         require_once ("lib/db.php");
         if(trim($_POST["cus_phone"])!=""&& trim($_POST["cus_addr"])!=""&& trim($_POST["cus_name"])!=""){
             $_SESSION['id_log_current'] =  DP::run_query("INSERT INTO `toshiba_lucky_spin`.`logs` (`cus_name`, `cus_phone`, `cus_add`, `time_create`,`logs_state`) VALUES (?, ?, ?, now(),0);",[$_POST["cus_name"],$_POST["cus_phone"],$_POST["cus_addr"]],3);
+            
+            echo $_SESSION['id_log_current'];
             if( $_SESSION['id_log_current']){
                 $_SESSION["page"] = 2;
+                
             } 
             else {
                 unset($_SESSION['id_log_current']);
@@ -48,8 +52,7 @@
                 <div class="input_field">
                     <label for="">Seri</label> <br>
                     <div class="input_item">
-                        <input class="input_seri" type="text"
-                            name="ticket_seri" id="">
+                        <input class="input_seri" type="text" name="ticket_seri" id="">
                     </div>
                 </div>
                 <div class="input_field">
@@ -100,19 +103,20 @@
 <script src="vendor/jquery.min.js"></script>
 <script src="js/index.js"></script>
 <script>
-    $('.input_stamp').change(function(){
-        $(".notification").addClass('d-none');
-    });
-    $('.input_seri').change(function(){
-        $(".notification").addClass('d-none');
-    });
-    $('.frm_seri').submit(function(){
-        if($('.input_seri').val().trim()==""||$('.input_stamp').val().trim()==""||Number($('.input_seri').val().trim())>=8000||Number($('.input_seri').val().trim())<=0||Number($('.input_stamp').val().trim())>17){
-            $(".notification").removeClass('d-none');
-            return false;
-        }
-    });
-    
+$('.input_stamp').change(function() {
+    $(".notification").addClass('d-none');
+});
+$('.input_seri').change(function() {
+    $(".notification").addClass('d-none');
+});
+$('.frm_seri').submit(function() {
+    if ($('.input_seri').val().trim() == "" || $('.input_stamp').val().trim() == "" || Number($('.input_seri')
+            .val().trim()) >= 8000 || Number($('.input_seri').val().trim()) <= 0 || Number($('.input_stamp')
+            .val().trim()) > 17) {
+        $(".notification").removeClass('d-none');
+        return false;
+    }
+});
 </script>
 
 </html>

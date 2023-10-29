@@ -87,7 +87,8 @@
 // })
 $('#frm_reg').submit(function() {
     var regexPhone = /^0\d{9}$/;
-    if ($('.input_name').val().trim() == "" || $('.input_phone').val().trim() == "" || $('.input_addr' ).val().trim() == ""||!regexPhone.test($('.input_phone').val())) {
+    if ($('.input_name').val().trim() == "" || $('.input_phone').val().trim() == "" || $('.input_addr').val()
+        .trim() == "" || !regexPhone.test($('.input_phone').val())) {
         alert("Dữ liệu không hợp lệ!");
         return false;
     }
