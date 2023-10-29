@@ -5,20 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GIFT</title>
-    <link rel="stylesheet" href="css/gift-confirm.css">
+    <link rel="stylesheet" href="../css/gift-confirm.css">
 </head>
-<header>
-
-</header>
-
 <body class="form_size ">
     <div class="container">
         <div class="header">
             <div class="Row contain-logo">
-                <img src="image/logo_TOSHIBA/LOGO_TOSHIBA.png" alt="" class="img-logo">
+                <img src="../image/logo_TOSHIBA/LOGO_TOSHIBA.png" alt="" class="img-logo">
             </div>
             <div class="Row contain-tagline">
-                <img src="image/tagline_chuong_trinh/TAGLINE_chuong_trinh.png" alt="" class="img-tagline">
+                <img src="../image/tagline_chuong_trinh/TAGLINE_chuong_trinh.png" alt="" class="img-tagline">
             </div>
 
         </div>
@@ -35,14 +31,13 @@
                 </div>
             </div>
             <div id="nckd">
-                <img src="image/noi_chien/nckd.png" alt="" id="nckd">
+                <img src="../image/noi_chien/nckd.png" alt="" id="nckd">
             </div>
         </form>
 
     </div>
 
 </body>
-<script src="vendor/jquery.min.js"></script>
-<script src="js/index.js"></script>
+<script src="../vendor/jquery.min.js"></script>
+<script src="../js/index.js"></script>
 </html>
-
