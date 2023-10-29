@@ -5,9 +5,9 @@
     };
     require_once ("lib/db.php");
     if(isset($_POST['btn_login'])){
-        // echo "<script>alert(".$_SESSION['id_log_current'].")</script>";
-
-        $rs=DP::run_query("UPDATE `toshiba_lucky_spin`.`logs` SET `spin_quantity` = ?, `ticket_stamp` = ?, `ticket_seri` = ? WHERE (`id_log` = ?);",[$_POST["ticket_stamp"]/2,$_POST["ticket_stamp"],$_POST["ticket_seri"],$_SESSION['id_log_current']],1);
+        // echo "<script>alert('".implode(",",$_POST['channel'])."');</script>";
+        
+        $rs=DP::run_query("UPDATE `toshiba_lucky_spin`.`logs` SET `channels`=?,`spin_quantity` = ?, `ticket_stamp` = ?, `ticket_seri` = ? WHERE (`id_log` = ?);",[(isset($_POST['channel'])?implode(",",$_POST['channel']):''),$_POST["ticket_stamp"]/2,$_POST["ticket_stamp"],$_POST["ticket_seri"],$_SESSION['id_log_current']],1);
         if($rs) {
             $_SESSION['page'] = 3;
             $_SESSION['stamp'] = floor($_POST["ticket_stamp"]/2);

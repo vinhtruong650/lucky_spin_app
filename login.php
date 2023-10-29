@@ -9,8 +9,9 @@
         if(trim($_POST["cus_phone"])!=""&& trim($_POST["cus_addr"])!=""&& trim($_POST["cus_name"])!=""){
             $_SESSION['id_log_current'] =  DP::run_query("INSERT INTO `toshiba_lucky_spin`.`logs` (`cus_name`, `cus_phone`, `cus_add`, `time_create`,`logs_state`) VALUES (?, ?, ?, now(),0);",[$_POST["cus_name"],$_POST["cus_phone"],$_POST["cus_addr"]],3);
             
-            echo $_SESSION['id_log_current'];
+            // echo $_SESSION['id_log_current'];
             if( $_SESSION['id_log_current']){
+                
                 $_SESSION["page"] = 2;
                 
             } 
@@ -69,22 +70,28 @@
                     </button>
                     <div class="dropdown-menu">
                         <div class="menu_item">
-                            <input id="google" type="checkbox" name="" id=""><label for="google">Google</label>
+                            <input id="google" type="checkbox" name="channel[]" value="gg"><label
+                                for=" google">Google</label>
                         </div>
                         <div class="menu_item">
-                            <input id="facebook" style="color: red;" type="checkbox" name="" id=""><label
+                            <input id="facebook" style="color: red;" type="checkbox" value="fb" name=" channel[]"><label
                                 for="facebook">Facebook</label>
                         </div>
                         <div class="menu_item">
-                            <input id="sieuthi" type="checkbox" name="" id=""><label for="sieuthi">Siêu thị điện
+                            <input id="sieuthi" type="checkbox" name="channel[]" value="st"><label for="sieuthi">Siêu
+                                thị
+                                điện
                                 máy</label>
                         </div>
                         <div class="menu_item">
-                            <input id="nguoithan" type="checkbox" name="" id=""><label for="nguoithan">Người thân/Bạn
+                            <input id="nguoithan" type="checkbox" name="channel[]" value="nt"><label
+                                for="nguoithan">Người
+                                thân/Bạn
                                 bè</label>
                         </div>
                         <div class="menu_item">
-                            <input id="khuvuc_sk" type="checkbox" name="" id=""><label for="khuvuc_sk">Tại khu vực sự
+                            <input id="khuvuc_sk" type="checkbox" name="channel[]" value="sk"><label for="khuvuc_sk">Tại
+                                khu vực sự
                                 kiện</label>
                         </div>
                     </div>
@@ -110,12 +117,17 @@ $('.input_seri').change(function() {
     $(".notification").addClass('d-none');
 });
 $('.frm_seri').submit(function() {
+    var regexPhone = /^\d{4}$/;
     if ($('.input_seri').val().trim() == "" || $('.input_stamp').val().trim() == "" || Number($('.input_seri')
             .val().trim()) >= 8000 || Number($('.input_seri').val().trim()) <= 0 || Number($('.input_stamp')
-            .val().trim()) > 17) {
+            .val().trim()) > 17 || !regexPhone.test($('.input_seri').val())) {
+
+
         $(".notification").removeClass('d-none');
         return false;
     }
+
+
 });
 </script>
 
