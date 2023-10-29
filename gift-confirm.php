@@ -10,6 +10,16 @@
             case 2: header('Location: login.php');exit();break;
         }
     }
+    $giftname="";
+
+    switch($_SESSION['gift']){
+        case 1: $giftname="1 Nồi chiên không dầu";break;
+        case 2: $giftname="1 sổ tay";break;
+        case 3: $giftname="1 túi Tote";break;
+        case 4: $giftname="1 voucher 5%";break;
+        case 5: $giftname="1 voucher 10%";break;
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,17 +48,17 @@
         <form action="" id="spinform">
             <div class="draw">
                 <p id="tag">chúc mừng bạn đã trúng được</p>
-                <p class="" id="gift-name">01 túi tote</p>
+                <p class="" id="gift-name"><?php echo $giftname  ?></p>
                 <div class="mb-3 mt-3 text-center">
                     <p id="msg_alert" class="d-none" style="color: #f6d883;"></p>
-                    <button type="button" name="btn_close" id="btn_close"
+                    <button type="button" name="btn_close" id="btn_close" onclick="btn();"
                         style="
                    margin-bottom: 30px; font-weight:900;border-radius: 1rem;background: linear-gradient(to bottom,red,red,red);border:none;color:white;"
                         class="btn btn-success h3">Kết thúc</button>
                 </div>
             </div>
             <div id="nckd">
-                <img src="image/noi_chien/nckd.png" alt="" id="nckd">
+                <?php if($_SESSION['gift']==1) echo "<img src='image/noi_chien/nckd.png' alt='' id='nckd'>"; ?>
             </div>
         </form>
 

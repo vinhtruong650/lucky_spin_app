@@ -1,240 +1,291 @@
 ﻿<?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-if(!isset($notSigned))
-{
-    if(!isset($_SESSION['admin']))
-    {
-        header('location:'.$level.'login.php');
-    }
-}
-else
-{
-    if(isset($_SESSION['admin']))
-    {
-        header('location:'.$level.'index.php');
-    }
-}
 require_once('../lib/db.php');
-if(isset($pro_path))
-{
+if (isset($pro_path)) {
     require_once($pro_path);
 }
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>Sabeco - Audit</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description">
-        <meta content="Coderthemes" name="author">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <!-- App favicon -->
-        <link rel="shortcut icon" href="../img/logo.png">
 
-        <!-- App css -->
-        <link href="assets\css\bootstrap.min.css" rel="stylesheet" type="text/css">
-        <link href="assets\css\icons.min.css" rel="stylesheet" type="text/css">
-        <link href="assets\css\app.min.css" rel="stylesheet" type="text/css">
-        <style>
-        /* body{
-            background-image: url(../img/bg_expand.png);
-        } */
-        </style>
-        <?php
-        if(isset($css)){
-            require_once($css);
-        }
-        ?>
-    </head>
+<head>
+    <meta charset="utf-8">
+    <title>TOSHIBA - ADMIN</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Responsive bootstrap 4 admin template" name="description">
+    <meta content="Coderthemes" name="author">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="assets\images\LOGO_TOSHIBA.ico">
+    <!-- App css -->
+    <link href="assets\css\bootstrap.min.css" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
+    <link href="assets\css\icons.min.css" rel="stylesheet" type="text/css">
+    <link href="assets\css\app.min.css" rel="stylesheet" type="text/css" id="app-stylesheet">
 
-    <body>
+    <?php
+    if (isset($css)) {
+        require_once($css);
+    }
+    ?>
+</head>
 
-        <!-- Begin page -->
-        <div id="wrapper">
+<body>
 
-            <!-- Topbar Start -->
-            <div class="navbar-custom">
-                <ul class="list-unstyled topnav-menu float-right mb-0">
-                    <li class="dropdown notification-list">
-                        <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                            <img src="assets\images\users\user-1.jpg" alt="user-image" class="rounded-circle">
-                            <span class="pro-user-name ml-1">
-                                <?php echo (isset($_SESSION['admin'])?$_SESSION['admin']['mem_name']:'');?> <i class="mdi mdi-chevron-down"></i> 
-                            </span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
+    <!-- Begin page -->
+    <div id="wrapper">
+
+
+        <!-- Topbar Start -->
+        <div class="navbar-custom">
+            <ul class="list-unstyled topnav-menu float-right mb-0">
+
+                <li class="dropdown notification-list">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                        <i class="mdi mdi-bell noti-icon"></i>
+                        <span class="badge badge-danger rounded-circle noti-icon-badge">4</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-lg">
+
+                        <!-- item-->
+                        <div class="dropdown-item noti-title">
+                            <h5 class="font-16 m-0">
+                                <span class="float-right">
+                                    <a href="" class="text-dark">
+                                        <small>Clear All</small>
+                                    </a>
+                                </span>Notification
+                            </h5>
+                        </div>
+
+                        <div class="slimscroll noti-scroll">
+
                             <!-- item-->
-                            <div class="dropdown-item noti-title">
-                                <h5 class="m-0 text-white">
-                                    Welcome !
-                                </h5>
-                            </div>
-                            <div class="dropdown-divider"></div>
-
-                            <!-- item-->
-                            <a href="logout.php" class="dropdown-item notify-item">
-                                <i class="fe-log-out"></i>
-                                <span>Logout</span>
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <div class="notify-icon bg-success"><i class="mdi mdi-comment-account-outline"></i></div>
+                                <p class="notify-details">Caleb Flakelar commented on Admin<small class="text-muted">1 min ago</small></p>
                             </a>
 
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <div class="notify-icon bg-info"><i class="mdi mdi-account-plus"></i></div>
+                                <p class="notify-details">New user registered.<small class="text-muted">5 hours ago</small></p>
+                            </a>
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <div class="notify-icon bg-danger"><i class="mdi mdi-heart"></i></div>
+                                <p class="notify-details">Carlos Crouch liked <b>Admin</b><small class="text-muted">3 days ago</small></p>
+                            </a>
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <div class="notify-icon bg-warning"><i class="mdi mdi-comment-account-outline"></i></div>
+                                <p class="notify-details">Caleb Flakelar commented on Admin<small class="text-muted">4 days ago</small></p>
+                            </a>
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <div class="notify-icon bg-primary">
+                                    <i class="mdi mdi-heart"></i>
+                                </div>
+                                <p class="notify-details">Carlos Crouch liked <b>Admin</b>
+                                    <small class="text-muted">13 days ago</small>
+                                </p>
+                            </a>
                         </div>
-                    </li>
 
-                </ul>
-
-                <!-- LOGO -->
-                <div class="logo-box">
-                    <a href="index.html" class="logo text-center">
-                        <span class="logo-lg">
-                           
-                            <span class="logo-lg-text-light">SABECO</span>
-                        </span>
-                        <span class="logo-sm">
-                            <!-- <span class="logo-sm-text-dark">X</span> -->
-                            <span class="logo-lg-text-light">SABECO</span>
-                        </span>
-                    </a>
-                </div>
-
-                <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
-                    <li>
-                        <button class="button-menu-mobile waves-effect waves-light">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </button>
-                    </li>
-        
-                </ul>
-            </div>
-            <!-- end Topbar -->
-
-            <!-- ========== Left Sidebar Start ========== -->
-            <div class="left-side-menu">
-
-                <div class="slimscroll-menu">
-
-                    <!--- Sidemenu -->
-                    <div id="sidebar-menu">
-
-                    <ul class="metismenu" id="side-menu">
-
-<li class="menu-title">Navigation</li>
-<li>
-    <a href="index.php">
-        <i class="la la-home"></i>
-        <span> Dashboard </span>
-    </a>
-</li>
-<?php
-if(isset($_SESSION['admin']) && $_SESSION['admin']['type']==1 && $_SESSION['admin']['chain_id']==0){
-?>
-<li>
-    <a href="member.php">
-        <i class="la la-user"></i>
-        <span> Tài khoản </span>
-    </a>
-</li>
-<li>
-    <a href="shift.php">
-        <i class="la la-calendar-o"></i>
-        <span> Ca làm việc </span>
-    </a>
-</li>
-<li>
-    <a href="city.php">
-        <i class="la la-building-o"></i>
-        <span> Tỉnh/Thành phố </span>
-    </a>
-</li>
-<li>
-    <a href="argent.php">
-        <i class="la la-fax"></i>
-        <span> Siêu thị </span>
-    </a>
-</li>
-<li>
-    <a href="statistics.php">
-        <i class="la la-bar-chart"></i>
-        <span> Thống kê HT</span>
-    </a>
-</li>
-<li>
-    <a href="input.php">
-        <i class="la la-barcode"></i>
-        <span> Nhập quà ST</span>
-    </a>
-</li>
-<li>
-    <a href="statistics_input.php">
-        <i class="la la-balance-scale"></i>
-        <span> Thống kê tồn ST</span>
-    </a>
-</li>
-<?php
-}
-?>
-
-
-</ul>
+                        <!-- All-->
+                        <a href="javascript:void(0);" class="dropdown-item text-primary text-center notify-item notify-all ">
+                            View all
+                            <i class="fi-arrow-right"></i>
+                        </a>
 
                     </div>
-                    <!-- End Sidebar -->
+                </li>
 
-                    <div class="clearfix"></div>
+                <li class="dropdown notification-list">
+                    <a class="nav-link dropdown-toggle nav-user mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                        <img src="assets\images\users\avatar-1.jpg" alt="user-image" class="rounded-circle">
+                        <span class="pro-user-name ml-1">
+                            Maxine K <i class="mdi mdi-chevron-down"></i>
+                        </span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
+                        <!-- item-->
+                        <div class="dropdown-header noti-title">
+                            <h6 class="text-overflow m-0">Welcome !</h6>
+                        </div>
 
-                </div>
-                <!-- Sidebar -left -->
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <i class="mdi mdi-account-outline"></i>
+                            <span>Profile</span>
+                        </a>
 
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <i class="mdi mdi-settings-outline"></i>
+                            <span>Settings</span>
+                        </a>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <i class="mdi mdi-lock-outline"></i>
+                            <span>Lock Screen</span>
+                        </a>
+
+                        <div class="dropdown-divider"></div>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <i class="mdi mdi-logout-variant"></i>
+                            <span>Logout</span>
+                        </a>
+
+                    </div>
+                </li>
+            </ul>
+
+            <!-- LOGO -->
+            <div class="logo-box">
+                <a href="index.html" class="logo text-center logo-dark">
+                    <span class="logo-lg">
+                        <img src="../image/logo_TOSHIBA/LOGO_TOSHIBA.png" alt="" height="26">
+                        <!-- <span class="logo-lg-text-dark">Simple</span> -->
+                    </span>
+                    <span class="logo-sm">
+                        <!-- <span class="logo-lg-text-dark">S</span> -->
+                        <img src="assets\images\logo-sm.png" alt="" height="22">
+                    </span>
+                </a>
+
+                <a href="index.html" class="logo text-center logo-light">
+                    <span class="logo-lg">
+                        <img src="assets\images\logo-light.png" alt="" height="26">
+                        <!-- <span class="logo-lg-text-light">Simple</span> -->
+                    </span>
+                    <span class="logo-sm">
+                        <!-- <span class="logo-lg-text-light">S</span> -->
+                        <img src="assets\images\logo-sm.png" alt="" height="22">
+                    </span>
+                </a>
             </div>
-            <!-- Left Sidebar End -->
 
-            <!-- ============================================================== -->
-            <!-- Start Page Content here -->
-            <!-- ============================================================== -->
+            <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
+                <li>
+                    <button class="button-menu-mobile">
+                        <i class="mdi mdi-menu"></i>
+                    </button>
+                </li>
 
-            <div class="content-page">
-                <div class="content">
-
-                    <!-- Start Content-->
-                    <div class="container-fluid">
-                        
-                        <!-- start page title -->
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="page-title-box">
-                                    <div class="page-title-right">
-                                        <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Quản trị</a></li>
-                                            <li class="breadcrumb-item active"><?php echo(isset($page_tit)?$page_tit:'');?></li>
-                                        </ol>
-                                    </div>
-                                    <h4 class="page-title"><?php echo(isset($page_tit)?$page_tit:'');?></h4>
+                <li class="d-none d-sm-block">
+                    <form class="app-search">
+                        <div class="app-search-box">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <div class="input-group-append">
+                                    <button class="btn" type="submit">
+                                        <i class="fas fa-search"></i>
+                                    </button>
                                 </div>
                             </div>
-                            <div class="col-12">
-                                <?php
-                                if(isset($content_path))
-                                {
-                                    require_once($content_path);
-                                }
-                                ?>
-                            </div>
-                        </div>     
-                        <!-- end page title --> 
-                        
-                    </div> <!-- container -->
+                        </div>
+                    </form>
+                </li>
+            </ul>
+        </div>
+        <!-- end Topbar --> <!-- ========== Left Sidebar Start ========== -->
+        <div class="left-side-menu">
 
-                </div> <!-- content -->
+
+            <div class="user-box">
+                <div class="float-left">
+                    <img src="assets\images\users\avatar-1.jpg" alt="" class="avatar-md rounded-circle">
+                </div>
+                <div class="user-info">
+                    <a href="#">Admin-TSB</a>
+                    <p class="text-muted m-0">ADMIN</p>
+                </div>
+            </div>
+
+            <!--- Sidemenu -->
+            <div id="sidebar-menu">
+
+                <ul class="metismenu" id="side-menu">
+
+                    <li class="menu-title">Navigation</li>
+
+                    <li>
+                        <a href="#">
+                            <i class="ti-home"></i>
+                            <span> TỔNG QUAN </span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="ui-elements.html">
+                            <i class="ti-paint-bucket"></i>
+                            <span> QUẢN LÝ TÀI KHOẢN </span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="javascript: void(0);">
+                            <i class="ti-light-bulb"></i>
+                            <span> THỐNG KÊ </span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li><a href="statistics.php">Thống kê quà hằng ngày</a></li>
+                            <li><a href="gift-confirm.php">Alerts</a></li>
+                            <li><a href="#">Alerts</a></li>
+                            <li><a href="#">Alerts</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="charts.html">
+                            <i class="ti-pie-chart"></i>
+                            <span> Charts </span>
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+            <!-- End Sidebar -->
+
+            <div class="clearfix"></div>
+
+
+        </div>
+        <!-- Left Sidebar End -->
+
+        <!-- ============================================================== -->
+        <!-- Start Page Content here -->
+        <!-- ============================================================== -->
+
+        <div class="content-page">
+            <div class="content">
+
+                <!-- Start container-fluid -->
+                <div class="container-fluid">
+
+                    <?php
+                    if (isset($content_path)) {
+                        require_once($content_path);
+                    }
+                    ?>
+
+                </div>
+                <!-- end container-fluid -->
+
+
 
                 <!-- Footer Start -->
                 <footer class="footer">
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-12">
-                                2022 &copy; LCT <a href="">LCT Chanel</a> 
+
                             </div>
                         </div>
                     </div>
@@ -242,121 +293,39 @@ if(isset($_SESSION['admin']) && $_SESSION['admin']['type']==1 && $_SESSION['admi
                 <!-- end Footer -->
 
             </div>
-
-            <!-- ============================================================== -->
-            <!-- End Page content -->
-            <!-- ============================================================== -->
-
+            <!-- end content -->
 
         </div>
-        <!-- END wrapper -->
+        <!-- END content-page -->
 
-        <!-- Right Sidebar -->
-        <div class="right-bar">
-            <div class="rightbar-title">
-                <a href="javascript:void(0);" class="right-bar-toggle float-right">
-                    <i class="mdi mdi-close"></i>
-                </a>
-                <h5 class="m-0 text-white">Settings</h5>
-            </div>
-            <div class="slimscroll-menu">
-                <!-- User box -->
-                <div class="user-box">
-                    <div class="user-img">
-                        <img src="assets\images\users\user-1.jpg" alt="user-img" title="Mat Helme" class="rounded-circle img-fluid">
-                        <a href="javascript:void(0);" class="user-edit"><i class="mdi mdi-pencil"></i></a>
-                    </div>
-            
-                    <h5><a href="javascript: void(0);">Marcia J. Melia</a> </h5>
-                    <p class="text-muted mb-0"><small>Product Owner</small></p>
-                </div>
+    </div>
+    <!-- END wrapper -->
 
-                <!-- Settings -->
-                <hr class="mt-0">
-                <div class="row">
-                    <div class="col-6 text-center">
-                        <h4 class="mb-1 mt-0">8,504</h4>
-                        <p class="m-0">Balance</p>
-                    </div>
-                    <div class="col-6 text-center">
-                        <h4 class="mb-1 mt-0">8,504</h4>
-                        <p class="m-0">Balance</p>
-                    </div>
-                </div>
-                <hr class="mb-0">
 
-                <div class="p-3">
-                    <div class="custom-control custom-switch mb-2">
-                        <input type="checkbox" class="custom-control-input" id="customSwitch1" checked="">
-                        <label class="custom-control-label" for="customSwitch1">Notifications</label>
-                    </div>
-                    <div class="custom-control custom-switch mb-2">
-                        <input type="checkbox" class="custom-control-input" id="customSwitch2">
-                        <label class="custom-control-label" for="customSwitch2">API Access</label>
-                    </div>
-                    <div class="custom-control custom-switch mb-2">
-                        <input type="checkbox" class="custom-control-input" id="customSwitch3" checked="">
-                        <label class="custom-control-label" for="customSwitch3">Auto Updates</label>
-                    </div>
-                    <div class="custom-control custom-switch mb-2">
-                        <input type="checkbox" class="custom-control-input" id="customSwitch4" checked="">
-                        <label class="custom-control-label" for="customSwitch4">Online Status</label>
-                    </div>
-                </div>
+    <!-- Right Sidebar -->
+    <!-- /Right-bar -->
 
-                <!-- Timeline -->
-                <hr class="mt-0">
-                <h5 class="pl-3 pr-3">Messages <span class="float-right badge badge-pill badge-danger">25</span></h5>
-                <hr class="mb-0">
-                <div class="p-3">
-                    <div class="inbox-widget">
-                        <div class="inbox-item">
-                            <div class="inbox-item-img"><img src="assets\images\users\user-2.jpg" class="rounded-circle" alt=""></div>
-                            <p class="inbox-item-author"><a href="javascript: void(0);" class="text-dark">Tomaslau</a></p>
-                            <p class="inbox-item-text">I've finished it! See you so...</p>
-                        </div>
-                        <div class="inbox-item">
-                            <div class="inbox-item-img"><img src="assets\images\users\user-3.jpg" class="rounded-circle" alt=""></div>
-                            <p class="inbox-item-author"><a href="javascript: void(0);" class="text-dark">Stillnotdavid</a></p>
-                            <p class="inbox-item-text">This theme is awesome!</p>
-                        </div>
-                        <div class="inbox-item">
-                            <div class="inbox-item-img"><img src="assets\images\users\user-4.jpg" class="rounded-circle" alt=""></div>
-                            <p class="inbox-item-author"><a href="javascript: void(0);" class="text-dark">Kurafire</a></p>
-                            <p class="inbox-item-text">Nice to meet you</p>
-                        </div>
+    <!-- Right bar overlay-->
+    <div class="rightbar-overlay"></div>
 
-                        <div class="inbox-item">
-                            <div class="inbox-item-img"><img src="assets\images\users\user-5.jpg" class="rounded-circle" alt=""></div>
-                            <p class="inbox-item-author"><a href="javascript: void(0);" class="text-dark">Shahedk</a></p>
-                            <p class="inbox-item-text">Hey! there I'm available...</p>
-                        </div>
-                        <div class="inbox-item">
-                            <div class="inbox-item-img"><img src="assets\images\users\user-6.jpg" class="rounded-circle" alt=""></div>
-                            <p class="inbox-item-author"><a href="javascript: void(0);" class="text-dark">Adhamdannaway</a></p>
-                            <p class="inbox-item-text">This theme is awesome!</p>
-                        </div>
-                    </div> <!-- end inbox-widget -->
-                </div> <!-- end .p-3-->
 
-            </div> <!-- end slimscroll-menu-->
-        </div>
-        <!-- /Right-bar -->
+    <!-- Vendor js -->
+    <script src="assets\js\vendor.min.js"></script>
 
-        <!-- Right bar overlay-->
-        <div class="rightbar-overlay"></div>
+    <script src="assets\libs\morris-js\morris.min.js"></script>
+    <script src="assets\libs\raphael\raphael.min.js"></script>
 
-        <!-- Vendor js -->
-        <script src="assets\js\vendor.min.js"></script>
+    <script src="assets\js\pages\dashboard.init.js"></script>
 
-        <!-- App js -->
-        <script src="assets\js\app.min.js"></script>
+    <!-- App js -->
+    <script src="assets\js\app.min.js"></script>
 
-        <?php
-        require_once('components/layout_script.php');
-        if(isset($js)){
-            require_once($js);
-        }
-        ?>
-    </body>
+    <?php
+    if (isset($js)) {
+        require_once($js);
+    }
+    ?>
+
+</body>
+
 </html>
