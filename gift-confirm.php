@@ -1,11 +1,11 @@
 <?php 
     session_start();
     if(!isset($_SESSION['page'])){
-        header('Location: confirmScreen.php');
+        header('Location: index.php');
     };
     if($_SESSION['page']!=4){
         switch($_SESSION['page']){
-            case 1: header('Location: confirmScreen.php');exit();break;
+            case 1: header('Location: index.php');exit();break;
             case 3: header('Location: spin.php');exit();break;
             case 2: header('Location: login.php');exit();break;
         }
@@ -51,10 +51,19 @@
                 <p class="" id="gift-name"><?php echo $giftname  ?></p>
                 <div class="mb-3 mt-3 text-center">
                     <p id="msg_alert" class="d-none" style="color: #f6d883;"></p>
-                    <button type="button" name="btn_close" id="btn_close" onclick="btn();"
-                        style="
-                   margin-bottom: 30px; font-weight:900;border-radius: 1rem;background: linear-gradient(to bottom,red,red,red);border:none;color:white;"
-                        class="btn btn-success h3">Kết thúc</button>
+                    <?php
+                        if($_SESSION['stamp']>=2){
+                            echo "<button type='button' name='btn_close' id='btn_close' onclick='btn();'
+                            style='
+                       margin-bottom: 30px; font-weight:900;border-radius: 1rem;background: linear-gradient(to bottom,red,red,red);border:none;color:white;'class='btn btn-success h3'>Tiếp tục</button>";
+                        }
+                        else {
+                            echo "<button type='button' name='btn_close' id='btn_close' onclick='btn();'
+                            style='
+                       margin-bottom: 30px; font-weight:900;border-radius: 1rem;background: linear-gradient(to bottom,red,red,red);border:none;color:white;'class='btn btn-success h3'>Tiếp tục</button>";
+                        }
+                    ?>
+                    
                 </div>
             </div>
             <div id="nckd">
@@ -67,5 +76,12 @@
 </body>
 <script src="vendor/jquery.min.js"></script>
 <script src="js/index.js"></script>
+<script>
+    
+
+function btn() {
+    alert('oke');
+}
+</script>
 </html>
 
