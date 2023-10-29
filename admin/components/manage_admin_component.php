@@ -63,7 +63,7 @@
                                     <?php if($Acc['user']!="admin") {  ?>
                                     <form action="" method="post">
                                         <input type="hidden" value="<?= $Acc['user'] ?>" name="us_edit">
-                                        <button style="width: 5rem" type="submit" name="<?php echo $Acc['status']==1?"btn_nohide":"btn_hide" ?>" class="btn btn-primary"><?php echo $Acc['status']==1?"Hiện":"Ẩn" ?></button>
+                                        <button style="width: 5rem" type="submit" name="<?php echo $Acc['status']==1?"btn_nohide":"btn_hide" ?>" class="btn btn-primary"><?php echo $Acc['status']==1?"Ẩn":"Hiện" ?></button>
                                     </form>
                                     <?php }?>
                                 </td>

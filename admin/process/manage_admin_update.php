@@ -4,13 +4,12 @@ if(isset($_POST['btn_add'])){
     $us=DP::run_query("SELECT * FROM toshiba_lucky_spin.user where user = ?;",[$_POST['us']],2);
     if(count($us)>0){
         echo "<script>alert('Tài khoản đã tồn tại!')</script>";
-        return false;
-    }
-    $pwHash = password_hash($_POST['pass'],PASSWORD_DEFAULT);
+    }else{
+        $pwHash = md5($_POST['pass']);
     if(DP::run_query("INSERT INTO `toshiba_lucky_spin`.`user` (`user`, `pass`, `status`) VALUES (?, ?, '1');",[$_POST['us'],$pwHash],1)){
         echo "<script>alert('Thêm thành công!')</script>";
     };
-    
+    }
 }
 
 if(isset($_POST['btn_nohide'])){

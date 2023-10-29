@@ -136,7 +136,7 @@ if (isset($pro_path)) {
                         <div class="dropdown-divider"></div>
 
                         <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <a href="logout.php" class="dropdown-item notify-item logout_btn">
                             <i class="mdi mdi-logout-variant"></i>
                             <span>Logout</span>
                         </a>
@@ -176,21 +176,6 @@ if (isset($pro_path)) {
                         <i class="mdi mdi-menu"></i>
                     </button>
                 </li>
-
-                <li class="d-none d-sm-block">
-                    <form class="app-search">
-                        <div class="app-search-box">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search...">
-                                <div class="input-group-append">
-                                    <button class="btn" type="submit">
-                                        <i class="fas fa-search"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </li>
             </ul>
         </div>
         <!-- end Topbar --> <!-- ========== Left Sidebar Start ========== -->
@@ -213,16 +198,8 @@ if (isset($pro_path)) {
                 <ul class="metismenu" id="side-menu">
 
                     <li class="menu-title">Navigation</li>
-
                     <li>
-                        <a href="#">
-                            <i class="ti-home"></i>
-                            <span> TỔNG QUAN </span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="ui-elements.html">
+                        <a href="manage_admin.php">
                             <i class="ti-user"></i>
                             <span> QUẢN LÝ TÀI KHOẢN </span>
                         </a>
@@ -235,14 +212,12 @@ if (isset($pro_path)) {
                             <span class="menu-arrow"></span>
                         </a>
                         <ul class="nav-second-level" aria-expanded="false">
-                            <li><a href="statistics.php">Lượt quay</a></li>
-                            <li><a href="gift-confirm.php">Alerts</a></li>
-                            <li><a href="#">Alerts</a></li>
-                            <li><a href="#">Alerts</a></li>
+                            <li><a href="time_spin.php">Lượt quay</a></li>
+                            <li><a href="customer.php">Khách hàng</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="ui-elements.html">
+                        <a href="gift.php">
                             <i class="ti-settings"></i>
                             <span> PHẦN QUÀ </span>
                         </a>
@@ -320,11 +295,10 @@ if (isset($pro_path)) {
     <script src="assets\libs\morris-js\morris.min.js"></script>
     <script src="assets\libs\raphael\raphael.min.js"></script>
 
-    <script src="assets\js\pages\dashboard.init.js"></script>
+    <!-- <script src="assets\js\pages\dashboard.init.js"></script> -->
 
     <!-- App js -->
     <script src="assets\js\app.min.js"></script>
-
     <?php
     if (isset($js)) {
         require_once($js);

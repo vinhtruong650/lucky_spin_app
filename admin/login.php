@@ -1,4 +1,6 @@
 <?php
+session_start();
+if(isset($_SESSION['login_success'])) header('Location: manage_admin.php');
 $level='';
 $page_tit='Đăng nhập hệ thống';
 $notSigned=true;

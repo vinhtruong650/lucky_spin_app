@@ -1,6 +1,6 @@
 
 <div class="container-fluid d-flex">
-        <form class="frm_login_admin" action="">
+        <form class="frm_login_admin" action="" method="post">
             <h2>Đăng nhập</h2>
             <div class="input_item">
                 <label for="">Tài khoản</label><br>

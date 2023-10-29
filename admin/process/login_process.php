@@ -1,17 +1,13 @@
 <?php
-session_start();
 if(isset($_POST['btn_login'])){
-    $us=DP::run_query("SELECT * FROM toshiba_lucky_spin.user where user = ?;",[$_POST['us']],2);
-    $pwHash = password_hash($_POST['pass'],PASSWORD_DEFAULT);
+    $us=DP::run_query("SELECT * FROM toshiba_lucky_spin.user where user = ? and status <> 2;",[$_POST['us']],2);
+    $pwHash = md5($_POST['pass']);
     if(count($us)>0){
-        if($pwHash == $us[0]['password']) {
+        echo $pwHash;
+        if($pwHash == $us[0]['pass']) {
             $_SESSION['login_success'] = true;
+            header('Location: manage_admin.php');
         }
     }
-    
-    if(DP::run_query("INSERT INTO `toshiba_lucky_spin`.`user` (`user`, `pass`, `status`) VALUES (?, ?, '1');",[$_POST['us'],$pwHash],1)){
-        echo "<script>alert('Thêm thành công!')</script>";
-    };
-    
 }
 ?>
