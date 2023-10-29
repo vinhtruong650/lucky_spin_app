@@ -1,3 +1,16 @@
+<?php 
+    session_start();
+    if(!isset($_SESSION['page'])){
+        header('Location: confirmScreen.php');
+    };
+    if($_SESSION['page']!=4){
+        switch($_SESSION['page']){
+            case 1: header('Location: confirmScreen.php');exit();break;
+            case 3: header('Location: spin.php');exit();break;
+            case 2: header('Location: login.php');exit();break;
+        }
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 

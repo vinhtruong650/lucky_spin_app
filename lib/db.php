@@ -26,9 +26,9 @@ class DP{
 	private static function connect_DB()
 	{
 		$host='localhost';
-		$dbname='sabeco_bcode';
+		$dbname='toshiba_lucky_spin';
 		$us='root';
-		$pass='';
+		$pass='Vinh2908';
 		// $us='sabeco';
 		// $pass='Admin@2022';
 		try {
