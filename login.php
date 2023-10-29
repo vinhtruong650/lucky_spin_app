@@ -95,7 +95,7 @@
                 method: "POST",
                 url: "api/update_tick.php",
                 data: {
-                    cus_name: $('.input_seri').data('cus-name'),
+                    cus_name: $('.input_seri').data('cus-name'),6
                     cus_phone:$('.input_seri').data('cus-phone'),
                     cus_addr:$('.input_seri').data('cus-addr'),
                     ticket_seri: $('.input_seri').val(),
