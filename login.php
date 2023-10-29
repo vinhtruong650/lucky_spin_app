@@ -29,7 +29,7 @@
             <img src="image/tagline_chuong_trinh/TAGLINE_chuong_trinh.png" alt="">
         </div>
         <main class="body">
-            <form class="frm_seri" action="./spin.php" method="get">
+            <form class="frm_seri" action="./spin.php" method="post">
                 <div class="input_field">
                     <label for="">Seri</label> <br>
                     <div class="input_item">
@@ -104,7 +104,7 @@
             })
             .done(function (msg) {
                 if(msg==="1") {
-                    $('.frm_seri').submit();
+                    window.location.href = "spin.php";
                 }
                 else if(msg==="0") {
                     alert("Phiếu quay không hợp lệ hoặc đã sử dụng");
