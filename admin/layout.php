@@ -223,7 +223,7 @@ if (isset($pro_path)) {
 
                     <li>
                         <a href="ui-elements.html">
-                            <i class="ti-paint-bucket"></i>
+                            <i class="ti-user"></i>
                             <span> QUẢN LÝ TÀI KHOẢN </span>
                         </a>
                     </li>
@@ -231,17 +231,22 @@ if (isset($pro_path)) {
                     <li>
                         <a href="javascript: void(0);">
                             <i class="ti-light-bulb"></i>
-                            <span> THỐNG KÊ </span>
+                            <span> LƯỢT QUAY </span>
                             <span class="menu-arrow"></span>
                         </a>
                         <ul class="nav-second-level" aria-expanded="false">
-                            <li><a href="statistics.php">Thống kê quà hằng ngày</a></li>
+                            <li><a href="statistics.php">Lượt quay</a></li>
                             <li><a href="gift-confirm.php">Alerts</a></li>
                             <li><a href="#">Alerts</a></li>
                             <li><a href="#">Alerts</a></li>
                         </ul>
                     </li>
-
+                    <li>
+                        <a href="ui-elements.html">
+                            <i class="ti-settings"></i>
+                            <span> PHẦN QUÀ </span>
+                        </a>
+                    </li>
                     <li>
                         <a href="charts.html">
                             <i class="ti-pie-chart"></i>
@@ -267,7 +272,7 @@ if (isset($pro_path)) {
             <div class="content">
 
                 <!-- Start container-fluid -->
-                <div class="container-fluid">
+                
 
                     <?php
                     if (isset($content_path)) {
@@ -275,7 +280,7 @@ if (isset($pro_path)) {
                     }
                     ?>
 
-                </div>
+                
                 <!-- end container-fluid -->
 
 
