@@ -445,7 +445,7 @@
                 data: {}
             })
                 .done(function (msg) {
-                    // alert(msg);
+                    alert(msg);
                     if (msg == '-1') {
                         alert("Đã hết quà!!");
                         window.location.href = 'login.html';
@@ -468,7 +468,7 @@
                         awa_ani = 'ani_voucher10_' + (Math.floor(Math.random() * 3) + 1);
                     }
                     $_SESSION['gift'] = msg;
-                    // alert(awa_ani);
+                    alert(awa_ani);
 
                 });
             $('#btn_spin').click(function () {
@@ -482,7 +482,7 @@
                     flag = true;
                     // console.log(flag);
 
-                    setTimeout("$('#btn_spin').show();flag=false;window.location.href='./gift-confirm.html';$('#spinform').removeClass('spinform_bgspin');", 10000);
+                    setTimeout("$('#btn_spin').show();flag=false;window.location.href='.gift-confirm.php';$('#spinform').removeClass('spinform_bgspin');", 10000);
                 }
             });
         });

@@ -17,9 +17,9 @@
                     <div class="row">
                         <div class="col-sm-12 col-md-10">
                         </div>
-                        <!-- <div class="col-sm-12 col-md-2">
-                            <div id="datatable-buttons_filter" class="dataTables_filter"><label>Ngày:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="datatable-buttons"></label></div>
-                        </div> -->
+                        <div class="col-sm-12 col-md-2">
+                            <div id="datatable-buttons_filter" class="dataTables_filter"><label>Ngày:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="datatable-buttons" id="search_date"></label></div>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-12">

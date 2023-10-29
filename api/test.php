@@ -2,7 +2,7 @@
 require('../lib/db.php');
 $ngayHienTai = date('N'); // 'N' trả về số nguyên từ 1 đến 7
 
-$check=DP::run_query("SELECT * FROM `gift_of_day` where status=1",[],2);
+$check=DP::run_query("SELECT * FROM `gift_of_day` where status=0",[],2);
 if($check==null){
     echo -1;
 }

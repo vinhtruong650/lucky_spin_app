@@ -25,7 +25,7 @@
         <form action="" id="spinform">
             <div class="draw">
                 <p id="tag">chúc mừng bạn đã trúng được</p>
-                <p class="" id="gift-name">01 túi tote</p>
+                <p class="" id="gift-name">01 nồi chiên không dầu</p>
                 <div class="mb-3 mt-3 text-center">
                     <p id="msg_alert" class="d-none" style="color: #f6d883;"></p>
                     <button type="button" name="btn_close" id="btn_close" onclick="btn();"
