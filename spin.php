@@ -458,7 +458,7 @@
                 data: {}
             })
                 .done(function (msg) {
-                    // alert(msg);
+                    alert(msg);
                     if (msg == '-1') {
                         alert("Đã hết quà!!");
                         window.location.href = 'login.html';
@@ -494,7 +494,7 @@
                     $(".vongquay").addClass(awa_ani);
                     flag = true;
                     // console.log(flag);
-                    setTimeout("$('#btn_spin').show();flag=false;window.location.href='./gift-confirm.php';$('#spinform').removeClass('spinform_bgspin');", 10000);
+                    setTimeout("$('#btn_spin').show();flag=false;window.location.href='gift-confirm.php';$('#spinform').removeClass('spinform_bgspin');", 10000);
                 }
             });
         });

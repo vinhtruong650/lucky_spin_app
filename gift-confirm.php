@@ -91,7 +91,7 @@ function btnTiepTuc() {
                 data: {}
             })
             .done(function () {
-                window.location.href='./spin.php'
+                window.location.href='spin.php'
 
                 
             }).fail(function(){
