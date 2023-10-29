@@ -1,4 +1,3 @@
-
 <?php 
     session_start();
     if(!isset($_SESSION['page'])){
@@ -7,8 +6,8 @@
     if($_SESSION['page']!=3){
         switch($_SESSION['page']){
             case 1: header('Location: index.php');exit();break;
+            case 4: header('Location: gift-comfirm.php');exit();break;
             case 2: header('Location: login.php');exit();break;
-            case 4: header('Location: gift-confirm.php');exit();break;
         }
     }
 ?>
