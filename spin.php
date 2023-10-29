@@ -481,11 +481,7 @@
                     $(".vongquay").addClass(awa_ani);
                     flag = true;
                     // console.log(flag);
-                    <?php
-                    $_SESSION['page']=3;
-
-                    ?>
-                    setTimeout("$('#btn_spin').show();flag=false;window.location.href='./gift-confirm.html';$('#spinform').removeClass('spinform_bgspin');", 10000);
+                    setTimeout("$('#btn_spin').show();flag=false;window.location.href='./gift-confirm.php';$('#spinform').removeClass('spinform_bgspin');", 10000);
                 }
             });
         });

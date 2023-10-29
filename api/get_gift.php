@@ -51,5 +51,8 @@ shuffle($lst_awa);
 // }
 // echo $_SESSION['draw_awa'][count($_SESSION['draw_awa'])-1];\
 $_SESSION['page']=4;
-echo $lst_awa[rand(0,count($lst_num))];
+ 
+$gift = $lst_awa[rand(0,count($lst_num))];
+echo $gift;
+$_SESSION['gift']=$gift;
 ?>
