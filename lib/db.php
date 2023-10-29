@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> origin/Vinh
+
 <?php
 function get_client_ip() {
     $ipaddress = '';
@@ -32,7 +29,7 @@ class DP{
 		$host='localhost';
 		$dbname='toshiba_lucky_spin';
 		$us='root';
-		$pass='Vinh2908';
+		$pass='';
 		// $us='sabeco';
 		// $pass='Admin@2022';
 		try {

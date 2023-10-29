@@ -17,7 +17,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xác nhận</title>
-    <link rel="stylesheet" href="./css/login_css.css">
+    <link rel="stylesheet" href="./css/confirmScreen.css">
     <link rel="stylesheet" href="./vendor/fontawesome-free-5.15.4-web/css/all.min.css">
 </head>
 <body>

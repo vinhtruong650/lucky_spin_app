@@ -87,6 +87,7 @@
         $(".notification").addClass('d-none');
     });
     $('.btn_login').click(function(){
+        alert("1");
         if($('.input_seri').val().trim()==""||$('.input_stamp').val().trim()==""){
             $(".notification").removeClass('d-none');
             return;
