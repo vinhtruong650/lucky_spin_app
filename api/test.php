@@ -1,77 +1,41 @@
 <?php
-require('../lib/db.php');
-$ngayHienTai = date('N'); // 'N' trả về số nguyên từ 1 đến 7
-
-$check=DP::run_query("SELECT * FROM `gift_of_day` where status=1",[],2);
-if($check==null){
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+require_once('../lib/db.php');
+$lst_setting_awa= DP::run_query('SELECT `gift1`, `gift2`, `gift3`, `gift4`, `gift5` FROM `gift_of_day`',[],2)[0];
+$lst_num_awa = DP::run_query('SELECT SUM(gift1) as `gift1`,SUM(gift2) as `gift2`,SUM(gift3) as `gift3`,SUM(gift4) as `gift4`,SUM(gift5) as `gift5` FROM `logs` WHERE status=1',[],2)[0];
+$lst_num = [$lst_setting_awa['gift1']-($lst_num_awa['gift1']==''?0:$lst_num_awa['gift1']),$lst_setting_awa['gift2']-($lst_num_awa['gift2']==''?0:$lst_num_awa['gift2']),$lst_setting_awa['gift3']-($lst_num_awa['gift3']==''?0:$lst_num_awa['gift3']),$lst_setting_awa['gift4']-($lst_num_awa['gift4']==''?0:$lst_num_awa['gift4']),$lst_setting_awa['gift5']-($lst_num_awa['gift5']==''?0:$lst_num_awa['gift5'])];
+$min=0;
+foreach($lst_num as $val){
+    if($val>0 && ($min==0 || $val<$min)){
+        $min=$val;
+    }
+}
+if($min==0)
+{
     echo -1;
 }
-again:
-$percen = rand(0, 1000) / 10;
-
-$lstGift=DP::run_query("SELECT * FROM `gift_of_day`",[],2);
-if($ngayHienTai!=6)
-if($percen>=0&&$percen<=0.2){
-    if($lstGift[0]['status']==1)
-        goto again;
-    $_SESSION['page']=3;
-    echo 1;
+$lst_awa=[];
+foreach($lst_num as $key=>$val)
+{
+    for($i=0;$i<$val/$min;$i++){
+        $lst_awa[]=$key;
+    }
 }
-else if($percen<=2.5){
-    if($lstGift[1]['status']==1)
-        goto again;
-    $_SESSION['page']=3;
-    echo 2;
+shuffle($lst_awa);
+if(!isset($_SESSION['draw_awa']))
+{
+    $_SESSION['draw_awa']=[];
+    $_SESSION['time'] = true;
+    array_push($_SESSION['draw_awa'],$lst_awa[rand(0,4)]);
+    DP::run_query('update `mem_log` set draw_history=? WHERE `id`=?',[$_SESSION['draw_awa'][count($_SESSION['draw_awa'])-1],$_SESSION['id_log']],1);
 }
-else if($percen<=4.8){
-    if($lstGift[2]['status']==1)
-        goto again;
-    $_SESSION['page']=3;
-    echo 3;
+if($_SESSION['time'] === false)
+{
+    array_push($_SESSION['draw_awa'],$lst_awa[rand(0,4)]);
+    $_SESSION['time'] = true;
+    DP::run_query('update `mem_log` set draw_history=concat(draw_history,\'_\',?) WHERE `id`=?',[$_SESSION['draw_awa'][count($_SESSION['draw_awa'])-1],$_SESSION['id_log']],1);
 }
-else if($percen<=4.8+38.1){
-    if($lstGift[3]['status']==1)
-        goto again;
-    $_SESSION['page']=3;
-    echo 4;
-}
-else{
-    if($lstGift[4]['status']==1)
-        goto again;
-    $_SESSION['page']=3;
-    echo 5;
-}
-else
-if($percen>=0&&$percen<=0.2){
-    if($lstGift[0]['status']==1)
-        goto again;
-
-    $_SESSION['page']=3;
-    echo 1;
-}
-else if($percen<=2.8){
-    if($lstGift[1]['status']==1)
-        goto again;
-    $_SESSION['page']=3;
-    echo 2;
-}
-else if($percen<=5.2){
-    if($lstGift[2]['status']==1)
-        goto again;
-    $_SESSION['page']=3;
-    echo 3;
-}
-else if($percen<=5.2+37.8){
-    if($lstGift[3]['status']==1)
-        goto again;
-    $_SESSION['page']=3;
-    echo 4;
-}
-else{
-    if($lstGift[4]['status']==1)
-        goto again;
-    $_SESSION['page']=3;
-    echo 5;
-}
-
+echo $_SESSION['draw_awa'][count($_SESSION['draw_awa'])-1];
 ?>
