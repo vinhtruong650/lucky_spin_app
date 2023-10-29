@@ -53,6 +53,7 @@ shuffle($lst_awa);
 $_SESSION['page']=4;
  
 $gift = $lst_awa[rand(0,count($lst_num))];
-echo $gift;
 $_SESSION['gift']=$gift;
+echo $gift;
+
 ?>

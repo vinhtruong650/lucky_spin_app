@@ -3,6 +3,19 @@
     if(!isset($_SESSION['page'])){
         header('Location: index.php');
     };
+    if(isset($_POST['btn_submit'])&&$_SESSION['page']==1){
+        require_once ("lib/db.php");
+        if(trim($_POST["cus_phone"])!=""&& trim($_POST["cus_addr"])!=""&& trim($_POST["cus_name"])!=""){
+            $_SESSION['id_log_current'] =  DP::run_query("INSERT INTO `toshiba_lucky_spin`.`logs` (`cus_name`, `cus_phone`, `cus_add`, `time_create`,`logs_state`) VALUES (?, ?, ?, now(),0);",[$_POST["cus_name"],$_POST["cus_phone"],$_POST["cus_addr"]],3);
+            if( $_SESSION['id_log_current']){
+                $_SESSION["page"] = 2;
+            } 
+            else {
+                unset($_SESSION['id_log_current']);
+                header("Location: index.php");
+            };
+        }
+    }
     if($_SESSION['page']!=2){
         switch($_SESSION['page']){
             case 1: header('Location: index.php');exit();break;
@@ -13,6 +26,7 @@
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,6 +34,7 @@
     <link rel="stylesheet" href="css/login_css.css">
     <link rel="stylesheet" href="./vendor/fontawesome-free-5.15.4-web/css/all.min.css">
 </head>
+
 <body>
     <div class="form_size">
         <div class="logo-tsb">
@@ -33,7 +48,8 @@
                 <div class="input_field">
                     <label for="">Seri</label> <br>
                     <div class="input_item">
-                        <input class="input_seri" type="text" data-cus-phone=<?php if(isset($_SESSION['phone_cus'])) echo $_SESSION['phone_cus']; ?>  name="ticket_seri" id="">
+                        <input class="input_seri" type="text"
+                            name="ticket_seri" id="">
                     </div>
                 </div>
                 <div class="input_field">
@@ -48,21 +64,25 @@
                     <button class="dropbtn" type="button" onclick=show_hide_dropdown()>
                         <strong>Bạn biết đến nồi chiên không dầu TOSHIBA thông qua kênh nào?</strong>
                     </button>
-                    <div class="dropdown-menu" >
+                    <div class="dropdown-menu">
                         <div class="menu_item">
-                        <input id="google" type="checkbox" name="" id=""><label for="google">Google</label>
+                            <input id="google" type="checkbox" name="" id=""><label for="google">Google</label>
                         </div>
                         <div class="menu_item">
-                        <input id="facebook" style="color: red;" type="checkbox" name="" id=""><label for="facebook">Facebook</label>
+                            <input id="facebook" style="color: red;" type="checkbox" name="" id=""><label
+                                for="facebook">Facebook</label>
                         </div>
-                        <div  class="menu_item">
-                            <input id="sieuthi" type="checkbox" name="" id=""><label for="sieuthi">Siêu thị điện máy</label>
+                        <div class="menu_item">
+                            <input id="sieuthi" type="checkbox" name="" id=""><label for="sieuthi">Siêu thị điện
+                                máy</label>
                         </div>
-                        <div  class="menu_item">
-                            <input id="nguoithan" type="checkbox" name="" id=""><label for="nguoithan">Người thân/Bạn bè</label>
+                        <div class="menu_item">
+                            <input id="nguoithan" type="checkbox" name="" id=""><label for="nguoithan">Người thân/Bạn
+                                bè</label>
                         </div>
-                        <div  class="menu_item">
-                            <input id="khuvuc_sk" type="checkbox" name="" id=""><label for="khuvuc_sk">Tại khu vực sự kiện</label>
+                        <div class="menu_item">
+                            <input id="khuvuc_sk" type="checkbox" name="" id=""><label for="khuvuc_sk">Tại khu vực sự
+                                kiện</label>
                         </div>
                     </div>
                 </div>
@@ -70,11 +90,11 @@
                     <p>Thông tin đăng nhập không chính xác, vui lòng đăng nhập lại</p>
                 </div>
                 <div class="input_field">
-                    <button type="button" class="btn_login">Đăng nhập</button>
+                    <button name="btn_login" class="btn_login" type="submit">Đăng nhập</button>
                 </div>
             </form>
         </main>
-        
+
     </div>
 </body>
 <script src="vendor/jquery.min.js"></script>
@@ -86,38 +106,13 @@
     $('.input_seri').change(function(){
         $(".notification").addClass('d-none');
     });
-    $('.btn_login').click(function(){
-        if($('.input_seri').val().trim()==""||$('.input_stamp').val().trim()==""){
+    $('.frm_seri').submit(function(){
+        if($('.input_seri').val().trim()==""||$('.input_stamp').val().trim()==""||Number($('.input_seri').val().trim())>=8000||Number($('.input_seri').val().trim())<=0||Number($('.input_stamp').val().trim())>17){
             $(".notification").removeClass('d-none');
-            return;
+            return false;
         }
-        $.ajax({
-                method: "POST",
-                url: "api/update_tick.php",
-                data: {
-                    cus_name: $('.input_seri').data('cus-name'),
-                    cus_phone:$('.input_seri').data('cus-phone'),
-                    cus_addr:$('.input_seri').data('cus-addr'),
-                    ticket_seri: $('.input_seri').val(),
-                    ticket_stamp:$('.input_stamp').val(),
-                }
-            })
-            .done(function (msg) {
-                if(msg==="1") {
-                    window.location.href = "spin.php";
-                }
-                else if(msg==="0") {
-                    alert("Phiếu quay không hợp lệ hoặc đã sử dụng");
-                }
-                else if(msg==="-2"){
-                    alert("Số mộc không hợp lệ");
-                }else if(msg==="-1"){
-                    alert("Đã xảy ra lỗi!, hãy thử lại");
-                }
-            }).fail(function(){
-                alert("Đã xảy ra lỗi!, hãy thử lại");
-            }); 
     });
     
 </script>
+
 </html>

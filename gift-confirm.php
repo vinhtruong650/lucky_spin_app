@@ -51,10 +51,20 @@
                 <p class="" id="gift-name"><?php echo $giftname  ?></p>
                 <div class="mb-3 mt-3 text-center">
                     <p id="msg_alert" class="d-none" style="color: #f6d883;"></p>
-                    <button type="button" name="btn_close" id="btn_close" onclick="btn();"
-                        style="
-                   margin-bottom: 30px; font-weight:900;border-radius: 1rem;background: linear-gradient(to bottom,red,red,red);border:none;color:white;"
-                        class="btn btn-success h3">Kết thúc</button>
+                    <?php
+                        if($_SESSION['stamp']>=2){
+                            echo "<button type='button' name='btn_close' id='btn_close' onclick=btnTiepTuc()
+                            style='
+                       margin-bottom: 30px; font-weight:900;border-radius: 1rem;background: linear-gradient(to bottom,red,red,red);border:none;color:white;'class='btn btn-success h3'>Tiếp tục</button>";
+                        
+                        }
+                        else {
+                            echo "<button type='button' name='btn_close' id='btn_close' onclick='btnKetThuc()'
+                            style='
+                       margin-bottom: 30px; font-weight:900;border-radius: 1rem;background: linear-gradient(to bottom,red,red,red);border:none;color:white;'class='btn btn-success h3'>Kết thúc</button>";
+                        }
+                    ?>
+                    
                 </div>
             </div>
             <div id="nckd">
@@ -67,5 +77,23 @@
 </body>
 <script src="vendor/jquery.min.js"></script>
 <script src="js/index.js"></script>
+<script>
+    
+
+function btnTiepTuc() {
+    $.ajax({
+                method: "POST",
+                url: "api/update_logs.php",
+                data: {}
+            })
+            .done(function (msg) {
+                alert(msg);
+                window.location.href='spin.php'
+            }).fail(function(){
+                alert("Đã xảy ra lỗi!, hãy thử lại");
+            })
+
+}
+</script>
 </html>
 

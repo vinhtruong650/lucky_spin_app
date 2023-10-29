@@ -3,10 +3,21 @@
     if(!isset($_SESSION['page'])){
         header('Location: index.php');
     };
+    require_once ("lib/db.php");
+    if(isset($_POST['btn_login'])){
+        echo "<script>alert(".$_SESSION['id_log_current'].")</script>";
+
+        $rs=DP::run_query("UPDATE `toshiba_lucky_spin`.`logs` SET `spin_quantity` = ?, `ticket_stamp` = ?, `ticket_seri` = ? WHERE (`id_log` = ?);",[$_POST["ticket_stamp"]/2,$_POST["ticket_stamp"],$_POST["ticket_seri"],$_SESSION['id_log_current']],1);
+        if($rs) {
+            $_SESSION['page'] = 3;
+            $_SESSION['stamp'] = floor($_POST["ticket_stamp"]/2);
+        }
+    }
+    
     if($_SESSION['page']!=3){
         switch($_SESSION['page']){
             case 1: header('Location: index.php');exit();break;
-            case 4: header('Location: gift-comfirm.php');exit();break;
+            case 4: header('Location: gift-confirm.php');exit();break;
             case 2: header('Location: login.php');exit();break;
         }
     }
@@ -458,7 +469,6 @@
                 data: {}
             })
                 .done(function (msg) {
-                    // alert(msg);
                     if (msg == '-1') {
                         alert("Đã hết quà!!");
                         window.location.href = 'login.html';
@@ -494,7 +504,7 @@
                     $(".vongquay").addClass(awa_ani);
                     flag = true;
                     // console.log(flag);
-                    setTimeout("$('#btn_spin').show();flag=false;window.location.href='./gift-confirm.php';$('#spinform').removeClass('spinform_bgspin');", 10000);
+                    setTimeout("$('#btn_spin').show();flag=false;window.location.href='gift-confirm.php';$('#spinform').removeClass('spinform_bgspin');", 10000);
                 }
             });
         });
