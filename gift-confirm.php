@@ -53,14 +53,16 @@
                     <p id="msg_alert" class="d-none" style="color: #f6d883;"></p>
                     <?php
                         if($_SESSION['stamp']>=2){
-                            echo "<button type='button' name='btn_close' id='btn_close' onclick='btn();'
+                            echo "<button type='button' name='btn_close' id='btn_close' onclick='btnTiepTuc();'
                             style='
                        margin-bottom: 30px; font-weight:900;border-radius: 1rem;background: linear-gradient(to bottom,red,red,red);border:none;color:white;'class='btn btn-success h3'>Tiếp tục</button>";
+                        
                         }
                         else {
-                            echo "<button type='button' name='btn_close' id='btn_close' onclick='btn();'
+                            echo "<button type='button' name='btn_close' id='btn_close' onclick='btnKetThuc();'
                             style='
                        margin-bottom: 30px; font-weight:900;border-radius: 1rem;background: linear-gradient(to bottom,red,red,red);border:none;color:white;'class='btn btn-success h3'>Tiếp tục</button>";
+                        unset($_SESSION['page']);
                         }
                     ?>
                     
@@ -79,8 +81,23 @@
 <script>
     
 
-function btn() {
-    alert('oke');
+function btnTiepTuc() {
+    
+    <?php
+        ?>
+    $.ajax({
+                method: "POST",
+                url: "api/update_logs.php",
+                data: {}
+            })
+            .done(function () {
+                window.location.href='./spin.php'
+
+                
+            }).fail(function(){
+                alert("Đã xảy ra lỗi!, hãy thử lại");
+            })
+
 }
 </script>
 </html>
