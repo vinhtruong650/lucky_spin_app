@@ -14,27 +14,31 @@ if($ngayHienTai!=6)
 if($percen>=0&&$percen<=0.2){
     if($lstGift[0]['status']==1)
         goto again;
-
+    $_SESSION['page']=3;
     echo 1;
 }
 else if($percen<=2.5){
     if($lstGift[1]['status']==1)
         goto again;
+    $_SESSION['page']=3;
     echo 2;
 }
 else if($percen<=4.8){
     if($lstGift[2]['status']==1)
         goto again;
+    $_SESSION['page']=3;
     echo 3;
 }
 else if($percen<=4.8+38.1){
     if($lstGift[3]['status']==1)
         goto again;
+    $_SESSION['page']=3;
     echo 4;
 }
 else{
     if($lstGift[4]['status']==1)
         goto again;
+    $_SESSION['page']=3;
     echo 5;
 }
 else
@@ -42,26 +46,31 @@ if($percen>=0&&$percen<=0.2){
     if($lstGift[0]['status']==1)
         goto again;
 
+    $_SESSION['page']=3;
     echo 1;
 }
 else if($percen<=2.8){
     if($lstGift[1]['status']==1)
         goto again;
+    $_SESSION['page']=3;
     echo 2;
 }
 else if($percen<=5.2){
     if($lstGift[2]['status']==1)
         goto again;
+    $_SESSION['page']=3;
     echo 3;
 }
 else if($percen<=5.2+37.8){
     if($lstGift[3]['status']==1)
         goto again;
+    $_SESSION['page']=3;
     echo 4;
 }
 else{
     if($lstGift[4]['status']==1)
         goto again;
+    $_SESSION['page']=3;
     echo 5;
 }
 
