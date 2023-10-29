@@ -12,6 +12,7 @@
 </header>
 
 <body class="form_size ">
+
     <div class="container">
         <div class="header">
             <div class="Row contain-logo">
@@ -288,7 +289,7 @@
             }
         }
 
-        @keyframes ani_voucer5_1 {
+        @keyframes ani_voucher5_1 {
             from {
                 transform: translate(-50%, -50%) rotate(0deg);
             }
@@ -298,7 +299,7 @@
             }
         }
 
-        @keyframes ani_voucer10_1 {
+        @keyframes ani_voucher10_1 {
             from {
                 transform: translate(-50%, -50%) rotate(0deg);
             }
@@ -308,7 +309,7 @@
             }
         }
 
-        @keyframes ani_voucer5_2 {
+        @keyframes ani_voucher5_2 {
             from {
                 transform: translate(-50%, -50%) rotate(0deg);
             }
@@ -420,7 +421,7 @@
 
     </script>
     <script>
-        var awa_ani = 'ani_voucher10_2';
+        var awa_ani = '';
         var flag = false;
 
         function clearAni() {
@@ -440,41 +441,36 @@
             $('.cover').removeClass('d-none');
             $.ajax({
                 method: "POST",
-                url: "api/get_awa_draw.php",
+                url: "api/test.php",
                 data: {}
             })
                 .done(function (msg) {
-                    //alert(msg);
+                    // alert(msg);
                     if (msg == '-1') {
-                        window.location.href = 'z2_load_bill.html';
+                        alert("Đã hết quà!!");
+                        window.location.href = 'login.html';
                     }
-                    //alert(msg);
                     $('.cover').addClass('d-none');
-                    switch (msg) {
-                        case '0': {
-                            awa_ani = 'ani_10';
-                            break;
-                        }
-                        case '1': {
-                            awa_ani = 'ani_20';
-                            break;
-                        }
-                        case '2': {
-                            awa_ani = 'ani_50';
-                            break;
-                        }
-                        case '3': {
-                            awa_ani = 'ani_100';
-                            break;
-                        }
-                        case '4': {
-                            awa_ani = 'ani_200';
-                            break;
-                        }
+                    // alert(msg);
+                    if (msg == "1") {
+                        awa_ani = 'ani_noichien';
                     }
+                    if (msg == "2") {
+                        awa_ani = 'ani_sotay_' + (Math.floor(Math.random() * 2) + 1);
+                    }
+                    if (msg == "3") {
+                        awa_ani = 'ani_tuitote_' + (Math.floor(Math.random() * 2) + 1);
+                    }
+                    if (msg == "4") {
+                        awa_ani = 'ani_voucher5_' + (Math.floor(Math.random() * 4) + 1);
+                    }
+                    if (msg == "5") {
+                        awa_ani = 'ani_voucher10_' + (Math.floor(Math.random() * 3) + 1);
+                    }
+                    $_SESSION['gift'] = msg;
+                    // alert(awa_ani);
 
                 });
-
             $('#btn_spin').click(function () {
                 if (flag == false) {
                     console.log(flag);
@@ -484,7 +480,7 @@
                     $('#spinform').addClass('spinform_bgspin');
                     $(".vongquay").addClass(awa_ani);
                     flag = true;
-                    console.log(flag);
+                    // console.log(flag);
 
                     setTimeout("$('#btn_spin').show();flag=false;window.location.href='./gift-confirm.html';$('#spinform').removeClass('spinform_bgspin');", 10000);
                 }
