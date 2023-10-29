@@ -441,7 +441,7 @@
             $('.cover').removeClass('d-none');
             $.ajax({
                 method: "POST",
-                url: "api/test.php",
+                url: "api/get_gift.php",
                 data: {}
             })
                 .done(function (msg) {
