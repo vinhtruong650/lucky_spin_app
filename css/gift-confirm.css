@@ -1,12 +1,13 @@
-
-*{
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
+
 body {
     margin: auto;
 }
+
 .container {
     display: flex;
     flex-direction: column;
@@ -65,33 +66,34 @@ body {
     width: 88%;
     position: absolute;
     background: transparent;
-    padding:2%;
-    border-radius:10px ;
+    padding: 2%;
+    border-radius: 10px;
     box-shadow: #dbc486 0px 0px 1px;
     text-transform: uppercase;
     text-align: center;
 }
 
-#gift-name{
-font-size: 3.5rem;
-font-weight: bold;
-color: red;
-margin-bottom: 100px;
-margin: 0;
-margin-top: 20px;
-margin-bottom: 250px;
+#gift-name {
+    font-size: 2.7rem;
+    font-weight: bold;
+    color: red;
+    margin-bottom: 100px;
+    margin: 0;
+    margin-top: 20px;
+    margin-bottom: 250px;
 }
 
-#tag{
+#tag {
     margin-top: 30px;
     font-weight: bold;
     font-size: larger;
 }
-#btn_close{
+
+#btn_close {
     padding: 4px 40px;
 }
 
-#nckd{
+#nckd {
     display: block;
     width: 65%;
     position: absolute;
