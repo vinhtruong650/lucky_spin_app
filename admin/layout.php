@@ -257,7 +257,6 @@ if (isset($pro_path)) {
                     }
                     ?>
 
-
                 <!-- end container-fluid -->
 
 

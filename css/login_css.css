@@ -142,7 +142,7 @@ input[type="checkbox"]:checked{
     background-color: white;
     color: black;
     font-size: 16px;
-    padding: 10px 20px;
+    padding: 5px 20px;
     border: none;
    }
    
@@ -163,22 +163,20 @@ input[type="checkbox"]:checked{
    
    /* .drop_down:hover .dropdown-menu {display: block;} */
 .display_none{
-    min-height: 10rem;
+    height: 205px;
 }
    .menu_item:hover{
     background-color: lightgray;
    }
    .notification{
-    width: 10vw;
+    height: 50px;
+    width: 100%;
     margin-top: 10px;
     border: 1px solid rgba(236, 7, 7, 0.986);
     border-radius: 5px;
     background-color: #FFC7C7;
     text-align: center;
-    padding:.75rem;
-   }
-   .d-none{
-    display: none !important;
+    display: none;
    }
    .notification p{
     	padding: 0;
