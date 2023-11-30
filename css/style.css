@@ -1,0 +1,33 @@
+@font-face {
+	font-family: 'myriad';
+	src: url(../fonts/MYRIADPRO-REGULAR.OTF);
+}
+
+* {
+	font-family: 'myriad';
+}
+
+.cover {
+	width: 100vw;
+	height: 100vh;
+	padding-top: 90%;
+	top: 0;
+	left: 0;
+	position: fixed;
+	background-color: rgba(0, 0, 0, .8);
+	z-index: 999;
+}
+
+.cover h3 {
+	position: fixed;
+	bottom: 2rem;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.d-none {
+	display: none;
+
+	text-align: center;
+	color: white;
+}
